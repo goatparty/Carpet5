@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.Console;
 import java.io.*;
 
 public class Carpet {
