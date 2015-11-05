@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     private static Carpet carpet = new Carpet();
     private static Scanner keyboard = new Scanner(System.in);
-
+    private enum dimensions {X_DIMENSION,Y_DIMENSION};
     public static void main(String[] args) {
         boolean control = true;
         do {
@@ -15,11 +15,10 @@ public class Main {
     }
 
     private static int menu() {
-        clearScreen();
         int choice = 0;
         boolean isValid = false;
-        String boldGrayLine = "\033[1mCARPET COST CALCULATOR - BY EEMIL MILLER\033[0m";
-        System.out.println(boldGrayLine);
+        String title = "CARPET COST CALCULATOR\n______________________";
+        System.out.println(title);
         System.out.printf("Current Price/SF $%,.2f\n",carpet.getPrice());
         System.out.println("Please Enter Selection:");
         System.out.println("(1) - Enter X Dimension");
@@ -40,6 +39,8 @@ public class Main {
                 isValid = false;
             }
         } while(!isValid);
+
+        clearScreen();
 
         return choice;
     }
@@ -75,9 +76,8 @@ public class Main {
     }
 
     private static boolean checkReset() {
-
-        System.out.print("Enter 0 to reset or anything else to continue");
-        if (keyboard.nextLine().charAt(0) != '0')
+        System.out.print("Enter reset to reset or anything else to continue:");
+        if (keyboard.nextLine().toLowerCase().contains("reset"))
             return true;
         else return false;
     }
@@ -110,6 +110,7 @@ public class Main {
                 if (input > 0) {
                     isValid = true;
                     xDimension = input;
+                    carpet.setXDim(xDimension);
                 }
                 else {
                     isValid = false;
@@ -123,6 +124,7 @@ public class Main {
                 if (input > 0) {
                     isValid = true;
                     yDimension = input;
+                    carpet.setYDim(yDimension);
                 }
                 else {
                     isValid = false;
@@ -140,7 +142,4 @@ public class Main {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
-    public enum dimensions {X_DIMENSION, Y_DIMENSION}
 }
-

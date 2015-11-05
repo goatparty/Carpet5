@@ -3,7 +3,7 @@ import java.io.Console;
 import java.io.*;
 
 public class Carpet {
-
+    private int[] joke;
     Console con = null;
     Scanner keyboard = new Scanner(System.in);
     private double price = 8.00;
@@ -94,4 +94,3 @@ public class Carpet {
     }
 
 }
-
