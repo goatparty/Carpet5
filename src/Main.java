@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     private static Carpet carpet = new Carpet();
     private static Scanner keyboard = new Scanner(System.in);
-    private enum Dimensions {X_DIMENSION, Y_DIMENSION};
+
     public static void main(String[] args) {
         boolean control = true;
         do {
@@ -50,10 +50,10 @@ public class Main {
         }
         else if (status == 1 || status == 2) {
             if (status == 1) {
-                getDimensions(Dimensions.X_DIMENSION);
+                getDimensions(dimensions.X_DIMENSION);
             }
             else  {
-                getDimensions(Dimensions.Y_DIMENSION);
+                getDimensions(dimensions.Y_DIMENSION);
             }
         }
         else if (status == 3) {
@@ -99,11 +99,11 @@ public class Main {
         System.out.printf("Total Price: $%,.2f\n\nPrice Per Square Foot: $%,.2f\nWidth: %f Feet\nHeight %f Feet",carpet.getTotalPrice(),carpet.getPrice(),carpet.getXDim(),carpet.getYDim());
     }
 
-    private static void getDimensions(Dimensions d) {
+    private static void getDimensions(dimensions d) {
         boolean isValid = false;
         double xDimension = 0,yDimension = 0,input = 0;;
 
-        if (d == Dimensions.X_DIMENSION) {
+        if (d == dimensions.X_DIMENSION) {
             do {
                 System.out.print("Please Enter X Dimension: ");
                 input = keyboard.nextDouble();
@@ -116,8 +116,7 @@ public class Main {
                     System.out.println("Invalid Input: Please Try Again\nExpected Input: >0\nActual Input: " + input );
                 }
             } while(!isValid);
-        }
-        else if (d == Dimensions.Y_DIMENSION) {
+        } else if (d == dimensions.Y_DIMENSION) {
             do {
                 System.out.print("Please Enter Y Dimension: ");
                 input = keyboard.nextDouble();
@@ -136,9 +135,12 @@ public class Main {
             System.exit(388);
         }
     }
+
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
+    public enum dimensions {X_DIMENSION, Y_DIMENSION}
 }
 
